@@ -62,6 +62,11 @@ div.sphinxsidebar h3, div.sphinxsidebar h4 {
     margin-top: 1.5em;
 }
 
+div.sphinxsidebarwrapper {
+    top: 0;
+    position: relative;
+}
+
 div.sphinxsidebarwrapper > h3:first-child {
     margin-top: 0.2em;
 }
