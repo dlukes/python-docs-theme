@@ -46,6 +46,15 @@ $(function() {
   var dark_color = '#AAAAAA';
   var light_color = '#CCCCCC';
 
+  // set position: sticky on sidebar
+  // (browsers that don't support this will fall-back to
+  // positioning via scroll_sidebar)
+  var supportsPositionSticky = (window.CSS && window.CSS.supports &&
+                                window.CSS.supports('position', 'sticky'));
+  if (supportsPositionSticky) {
+    sidebarwrapper.css('position', 'sticky');
+  }
+
   function get_viewport_height() {
     if (window.innerHeight)
       return window.innerHeight;
@@ -165,6 +174,9 @@ $(function() {
 
   /* intelligent scrolling */
   function scroll_sidebar() {
+    if (supportsPositionSticky) {
+      return;
+    }
     var sidebar_height = sidebarwrapper.height();
     var viewport_height = get_viewport_height();
     var offset = sidebar.position()['top'];
